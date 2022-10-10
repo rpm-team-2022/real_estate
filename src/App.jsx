@@ -8,7 +8,7 @@ import "./App.css";
 
 const initialState = {
   properties: [],
-  isPropertySelected: false,
+  currentProperty: null,
 };
 
 function App() {
@@ -21,7 +21,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {!state.isPropertySelected ? <LandingPage state={state} /> : <PropertyDetails />}
+      {!state.currentProperty ? (
+        <LandingPage state={state} setState={setState} />
+      ) : (
+        <PropertyDetails state={state} setState={setState} />
+      )}
       <Footer />
     </div>
   );
