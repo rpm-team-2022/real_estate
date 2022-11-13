@@ -37,8 +37,12 @@ const PropertyDetails = ({ state, setState }) => {
             <strong>Location:</strong>
             {` ${property.area}, ${property.city}, ${property.province}`}
           </p>
-          <p>Property Details: {property.details}</p>
-          <p>Amenities:</p>
+          <p>
+            <strong>Property Details:</strong> {property.details}
+          </p>
+          <p>
+            <strong>Amenities:</strong>
+          </p>
           <ul>
             {property.amenities.map((amentity, idx) => {
               return <li key={idx}>{amentity}</li>;
