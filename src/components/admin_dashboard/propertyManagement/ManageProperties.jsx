@@ -9,8 +9,8 @@ const ManageProperties = () => {
   };
   return (
     <div>
-      <p> Manage Properties</p>
       <button onClick={() => clickHandler()}>go back to the dashboard</button>
+      <p> Manage Properties</p>
     </div>
   );
 };

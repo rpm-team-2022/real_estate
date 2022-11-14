@@ -11,10 +11,10 @@ const AdminLanding = ({ state, setState }) => {
       <p> select an option</p>
       <div className="admin_options">
         <button>
-          <Link to={"/admin/manage-properties"}>Manage Properties</Link>
+          <Link to={"manage-properties"}>Manage Properties</Link>
         </button>
         <button>
-          <Link to={"/admin/add-property"}>Add a new Property</Link>
+          <Link to={"add-property"}>Add a new Property</Link>
         </button>
         <button onClick={() => clickHandler()}>Logout</button>
       </div>

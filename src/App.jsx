@@ -7,7 +7,9 @@ import Footer from "./components/footer/Footer";
 import ManageProperties from "./components/admin_dashboard/propertyManagement/ManageProperties";
 import AddProperty from "./components/admin_dashboard/propertyManagement/AddProperty";
 import { data } from "./mockData/data";
-import AdminDashboard from "./components/admin_dashboard/AdminDashboard";
+import AdminLanding from "./components/admin_dashboard/AdminLanding";
+import PrivateRoutes from "./helpers/PrivateRoute";
+import Login from "./components/admin_dashboard/auth/Login";
 import "./App.css";
 
 const initialState = {
@@ -23,6 +25,8 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  React.createContext(state.isLoggedIn);
+
   return (
     <div className="App">
       <Header />
@@ -37,9 +41,20 @@ function App() {
             )
           }
         />
-        <Route path="/admin" element={<AdminDashboard state={state} setState={setState} />} />
-        <Route path="admin/manage-properties" element={<ManageProperties />} />
-        <Route path="admin/add-property" element={<AddProperty />} />
+        <Route path="login" element={<Login state={state} setState={setState} />} />
+        <Route element={PrivateRoutes(state.isLoggedIn)}>
+          <Route path="admin" exact>
+            <Route index element={<AdminLanding state={state} setState={setState} />} />
+            <Route
+              path="manage-properties"
+              element={<ManageProperties state={state} setState={setState} />}
+            />
+            <Route
+              path="add-property"
+              element={<AddProperty state={state} setState={setState} />}
+            />
+          </Route>
+        </Route>
       </Routes>
 
       <Footer />

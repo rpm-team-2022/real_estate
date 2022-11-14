@@ -9,8 +9,8 @@ const AddProperty = () => {
   };
   return (
     <div>
-      <p>Add Property</p>
       <button onClick={() => clickHandler()}>go back to the dashboard</button>
+      <p>Add Property</p>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const initialForm = {
   userName: "",
@@ -6,6 +7,7 @@ const initialForm = {
 };
 
 const Login = ({ state, setState }) => {
+  const navigate = useNavigate();
   const [form, setForm] = useState(initialForm);
 
   const changeHandler = (e) => {
@@ -15,9 +17,11 @@ const Login = ({ state, setState }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     setState({ ...state, isLoggedIn: true });
+    navigate("/admin");
   };
   return (
     <div>
+      <h4>Please Login to Proceed</h4>
       <form action="submit" onSubmit={submitHandler}>
         <label htmlFor="password">
           User Name: &nbsp;
